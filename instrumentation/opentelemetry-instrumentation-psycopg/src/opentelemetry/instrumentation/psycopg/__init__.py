@@ -180,6 +180,7 @@ class PsycopgInstrumentor(BaseInstrumentor):
         tracer_provider = kwargs.get("tracer_provider")
         enable_sqlcommenter = kwargs.get("enable_commenter", False)
         commenter_options = kwargs.get("commenter_options", {})
+        capture_parameters = kwargs.get("capture_parameters", False)
         enable_attribute_commenter = kwargs.get(
             "enable_attribute_commenter", False
         )
@@ -195,6 +196,7 @@ class PsycopgInstrumentor(BaseInstrumentor):
             enable_commenter=enable_sqlcommenter,
             commenter_options=commenter_options,
             enable_attribute_commenter=enable_attribute_commenter,
+            capture_parameters=capture_parameters,
         )
 
         dbapi.wrap_connect(
@@ -209,6 +211,7 @@ class PsycopgInstrumentor(BaseInstrumentor):
             enable_commenter=enable_sqlcommenter,
             commenter_options=commenter_options,
             enable_attribute_commenter=enable_attribute_commenter,
+            capture_parameters=capture_parameters,
         )
         dbapi.wrap_connect(
             __name__,
@@ -222,6 +225,7 @@ class PsycopgInstrumentor(BaseInstrumentor):
             enable_commenter=enable_sqlcommenter,
             commenter_options=commenter_options,
             enable_attribute_commenter=enable_attribute_commenter,
+            capture_parameters=capture_parameters,
         )
 
     def _uninstrument(self, **kwargs: Any):
